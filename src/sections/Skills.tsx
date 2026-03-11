@@ -36,8 +36,7 @@ function iconTagFromSkill(tag: (typeof portfolio.skills)[number]['tag']) {
       return 'linux'
     case 'docker':
       return 'docker'
-    case 'kubernetes':
-      return 'kubernetes'
+
     case 'azure':
       return 'azure'
     case 'terraform':
