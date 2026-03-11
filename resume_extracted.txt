@@ -1,0 +1,27 @@
+SHAIK MOHSIN Junior DevOps Enthusiast | Linux Administrator  Phone: 8431758137 |  shaikmohsin1026@gmail.com | Bangalore, India
+PROFESSIONAL SUMMARY Motivated and detail-oriented fresher with hands-on experience through personal and academic projects in Linux administration, application deployment, and version control using Git. Strong understanding of Software Development Life Cycle (SDLC), configuration management, and CI/CD concepts. Familiar with release workflows across development, testing, and production environments. Knowledgeable in Azure cloud fundamentals, Bash scripting, and deployment troubleshooting. Eager to learn enterprise tools and grow into DevOps and Release Engineering roles.
+TECHNICAL SKILLS Configuration & Release Management
+· Understanding of configuration management principles · Familiar with release lifecycle (Dev  QA  UAT  Production) · Basic knowledge of change and deployment coordination · Environment configuration and deployment troubleshooting
+Version Control & CI/CD · Git & GitHub ­ repository management, branching, merging · Understanding of CI/CD concepts (build, test, deploy lifecycle) · Basic knowledge of pipeline workflows and automation concepts
+Operating Systems · Linux (Ubuntu, CentOS, RHEL) ­ user management, services, logs, permissions · Windows Server ­ basic administration · Windows 10 / 11
+Cloud Platforms · Microsoft Azure ­ Virtual Machines, Storage Accounts, Networking (Fundamentals) · Basic understanding of cloud-based deployment models · AWS ­ basic knowledge
+Web & Application Deployment · Apache, Nginx ­ installation and configuration · Application deployment on Linux servers · REST API connectivity troubleshooting
+Networking · TCP/IP fundamentals · DNS, DHCP · Firewall concepts and port configuration
+Scripting & Automation Bash scripting ­ basic automation tasks PowerShell ­ basic commands
+Troubleshooting & Documentation
+
+Linux system troubleshooting Log analysis and issue identification Basic incident handling Documentation and reporting
+HANDS-ON EXPERIENCE / ACADEMIC PROJECTS
+FlexWork ­ Part-Time Job Platform (Web Application) Role: DevOps & Deployment Support (Academic Project)
+· Managed source code using Git and maintained version control workflows · Assisted in coordinating deployments across development and testing environments · Deployed frontend (React) and backend (Django) applications on Linux servers · Configured server environments, managed permissions, and handled service configurations · Performed deployment troubleshooting and resolved environment-related issues · Monitored logs and identified root causes of application errors · Documented deployment steps and configuration procedures
+LBS Gazette ­ Web-Based News Platform Role: Infrastructure & Backend Support
+· Managed code updates and tracked changes using Git · Supported application deployment and version tracking across environments · Assisted in release coordination and deployment validation · Configured Linux servers and resolved application performance issues · Monitored logs and handled debugging during deployment failures · Maintained documentation for configuration and deployment processes
+SYSTEM & LINUX ADMINISTRATION EXPERIENCE · Installed and configured Linux servers (Ubuntu, CentOS) · Managed users, groups, permissions, and services · Monitored system logs and performed basic log analysis · Troubleshot server crashes, memory issues, and application failures · Worked with SSH, firewall rules, and port configurations · Assisted in VM provisioning and maintenance · Documented issues, fixes, and system configurations
+SOFTWARE DEVELOPMENT & RELEASE UNDERSTANDING · Strong understanding of Software Development Life Cycle (SDLC) · Familiar with Agile-based development workflows · Understanding of release lifecycle from Development  QA  UAT  Production · Basic knowledge of change management and deployment approval process · Awareness of rollback strategies and post-deployment validation
+CERTIFICATIONS & LEARNING · Linux Administration ­ Ongoing · Azure Cloud & DevOps Concepts ­ Self-learning
+EDUCATION
+
+Bachelor of Computer Applications (BCA) Lal Bahadur Shastri First Grade Government College Affiliated to Bangalore North University CGPA-8.62
+CAREER OBJECTIVE To begin my career as a Configuration / Release Engineer or DevOps Associate in a reputed organization where I can apply my knowledge of version control, CI/CD concepts, Linux administration, and deployment workflows. I aim to gain hands-on experience in enterprise release management processes and grow into a DevOps and Cloud Engineering professional.
+
+
