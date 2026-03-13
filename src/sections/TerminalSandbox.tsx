@@ -96,6 +96,7 @@ export function TerminalSandbox() {
           <div>
             <p>Email: <a href={`mailto:${portfolio.email}`} className="text-cyan-400 underline">{portfolio.email}</a></p>
             <p>LinkedIn: <a href={`https://${portfolio.linkedin}`} target="_blank" rel="noreferrer" className="text-cyan-400 underline">{portfolio.linkedin}</a></p>
+            <p>WhatsApp: <a href="https://wa.me/918431758137" target="_blank" rel="noreferrer" className="text-cyan-400 underline">+91 8431758137</a></p>
           </div>
         )
         break
