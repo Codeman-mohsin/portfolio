@@ -97,7 +97,9 @@ export function HeaderNav() {
                     type="button"
                     onClick={() => {
                       setOpen(false)
-                      scrollToSection(item.id)
+                      setTimeout(() => {
+                        scrollToSection(item.id)
+                      }, 150)
                     }}
                     className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-left font-mono text-xs text-slate-200 transition hover:bg-white/10"
                   >

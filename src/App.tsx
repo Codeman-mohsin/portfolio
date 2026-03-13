@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { CloudBackground } from './components/CloudBackground'
 import { FloatingIcons } from './components/FloatingIcons'
 import { HeaderNav } from './components/HeaderNav'
@@ -14,6 +15,12 @@ import { TerminalSandbox } from './sections/TerminalSandbox'
 import { TechMarquee } from './components/TechMarquee'
 
 function App() {
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
+    }
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className="font-sans">
       <CloudBackground />
