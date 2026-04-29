@@ -13,6 +13,7 @@ import { Skills } from './sections/Skills'
 import { Tools } from './sections/Tools'
 import { TerminalSandbox } from './sections/TerminalSandbox'
 import { TechMarquee } from './components/TechMarquee'
+import { AiChatbot } from './components/AiChatbot'
 
 function App() {
   useEffect(() => {
@@ -43,6 +44,8 @@ function App() {
 
         <Footer />
       </div>
+
+      <AiChatbot />
     </div>
   )
 }
