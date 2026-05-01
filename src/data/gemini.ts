@@ -1,10 +1,10 @@
 import { portfolio } from './portfolio'
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined
-const MODEL = 'gemini-2.0-flash'
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`
+const API_KEY = import.meta.env.VITE_GROQ_API_KEY as string | undefined
+const MODEL = 'llama-3.1-8b-instant'
+const API_URL = 'https://api.groq.com/openai/v1/chat/completions'
 
-/** Build a rich system prompt so Gemini knows everything about Mohsin. */
+/** Build a rich system prompt so the LLM knows everything about Mohsin. */
 const SYSTEM_PROMPT = `You are an AI assistant embedded in Shaik Mohsin's portfolio website.
 Your role is to help visitors learn about Mohsin — answer their questions warmly, concisely, and professionally.
 Always speak in third person about Mohsin (e.g. "Mohsin has experience with…") unless the visitor asks you to speak as Mohsin.
@@ -42,7 +42,7 @@ export type GeminiMessage = {
 }
 
 /**
- * Call Google Gemini API with conversation history.
+ * Call Groq API with conversation history.
  * Returns the model's text response.
  */
 export async function askGemini(
@@ -50,62 +50,46 @@ export async function askGemini(
   conversationHistory: GeminiMessage[]
 ): Promise<string> {
   if (!API_KEY || API_KEY === 'your_api_key_here') {
-    throw new Error('GEMINI_API_KEY_NOT_SET')
+    throw new Error('API_KEY_NOT_SET')
   }
 
-  // Gemini requires first message to be 'user' — filter out leading model messages
-  const filteredHistory = conversationHistory.slice(
-    conversationHistory.findIndex(m => m.role === 'user')
-  )
-  // Ensure alternating user/model pattern (Gemini is strict about this)
-  const cleanHistory: GeminiMessage[] = []
-  for (const msg of filteredHistory.length > 0 ? filteredHistory : []) {
-    const lastRole = cleanHistory.length > 0 ? cleanHistory[cleanHistory.length - 1].role : null
-    if (lastRole !== msg.role) {
-      cleanHistory.push(msg)
-    }
-  }
-  const contents: GeminiMessage[] = [
-    ...cleanHistory,
-    { role: 'user', parts: [{ text: userMessage }] },
+  // Convert Gemini format to OpenAI/Groq format
+  const messages = [
+    { role: 'system', content: SYSTEM_PROMPT },
+    ...conversationHistory.map(m => ({
+      role: m.role === 'model' ? 'assistant' : 'user',
+      content: m.parts[0].text,
+    })),
+    { role: 'user', content: userMessage },
   ]
 
   const body = {
-    system_instruction: {
-      parts: [{ text: SYSTEM_PROMPT }],
-    },
-    contents,
-    generationConfig: {
-      temperature: 0.7,
-      topP: 0.95,
-      topK: 40,
-      maxOutputTokens: 300,
-    },
-    safetySettings: [
-      { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-      { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-      { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-      { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-    ],
+    model: MODEL,
+    messages,
+    temperature: 0.7,
+    max_tokens: 300,
   }
 
-  const res = await fetch(`${API_URL}?key=${API_KEY}`, {
+  const res = await fetch(API_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${API_KEY}`,
+    },
     body: JSON.stringify(body),
   })
 
   if (!res.ok) {
     const err = await res.text()
-    console.error('Gemini API error:', res.status, err)
-    throw new Error(`GEMINI_API_ERROR: ${res.status}`)
+    console.error('Groq API error:', res.status, err)
+    throw new Error(`API_ERROR: ${res.status}`)
   }
 
   const data = await res.json()
-  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text
+  const text = data?.choices?.[0]?.message?.content
 
   if (!text) {
-    throw new Error('GEMINI_EMPTY_RESPONSE')
+    throw new Error('EMPTY_RESPONSE')
   }
 
   return text.trim()
